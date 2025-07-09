@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Review Row</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            height: 90vh;
+        }
+        .left, .right {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .left {
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            max-height: 80vh;
+        }
+        .right {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            font-size: 18px;
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        button.option {
+            padding: 20px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #eee;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            transition: background 0.2s, border 0.2s;
+        }
+        button.option:hover {
+            background-color: #ddd;
+            border-color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="left">
+            {% if image_url %}
+                <img src="{{ image_url }}" alt="Row image">
+            {% else %}
+                <p>No image URL for this row.</p>
+            {% endif %}
+        </div>
+        <div class="right">
+            <h2>Row index: {{ row_number }}</h2>
+            <h1>READING {{ row.ACTUAL }}</h1>
+
+            <form id="tagForm" method="post">
+                <input type="hidden" name="comment" id="selectedComment">
+                <div class="button-grid">
+                    <button type="button" class="option" onclick="submitOption('CLEAR')">CLEAR</button>
+                    <button type="button" class="option" onclick="submitOption('BLUR')">BLUR</button>
+                    <button type="button" class="option" onclick="submitOption('GLARE')">GLARE</button>
+                    <button type="button" class="option" onclick="submitOption('DIRTY')">DIRTY</button>
+                    <button type="button" class="option" onclick="submitOption('SPOOF')">SPOOF</button>
+                    <button type="button" class="option" onclick="submitOption('ACTUAL WRONG')">ACTUAL WRONG</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function submitOption(value) {
+            document.getElementById('selectedComment').value = value;
+            document.getElementById('tagForm').submit();
+        }
+    </script>
+
+</body>
+</html>
