@@ -11,8 +11,8 @@ current_index = 0
 def start():
     global range_index, current_index
     if request.method == "POST":
-        from_row = int(request.form["from_row"])
-        to_row = int(request.form["to_row"])
+        from_row = max(int(request.form["from_row"]) - 2, 0)
+        to_row = max(int(request.form["to_row"]) - 2, 0)
         range_index = list(range(from_row, to_row + 1))
         current_index = 0
         return redirect(url_for("process"))
