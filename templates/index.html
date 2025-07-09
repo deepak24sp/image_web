@@ -53,7 +53,7 @@
     <div class="container">
         <div class="left">
             {% if image_url %}
-                <img src="{{ image_url }}" alt="Row image">
+                <img src="{{ image_url }}" loading="lazy" alt="Row image">
             {% else %}
                 <p>No image URL for this row.</p>
             {% endif %}
