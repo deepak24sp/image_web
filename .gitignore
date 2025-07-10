@@ -1,2 +1,3 @@
 /venv
 chunk*.xlsx
+.env

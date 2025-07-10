@@ -1,10 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for, session
+from dotenv import load_dotenv
+import os
 import pandas as pd
+
+load_dotenv()
+file_name = os.getenv("FILE_NAME")
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"  # needed for session
 
-df = pd.read_excel("chunk_9 1.xlsx")
+df = pd.read_excel(file_name)
 range_index = []
 current_index = 0
 empty_index = 0
@@ -35,7 +40,7 @@ def process():
     if request.method == "POST":
         comment = request.form["comment"]
         df.at[row_idx, "REASON"] = comment
-        df.to_excel("chunk_9 1.xlsx", index=False)
+        df.to_excel(file_name, index=False)
         current_index += 1
         return redirect(url_for("process"))
 
