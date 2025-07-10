@@ -66,7 +66,7 @@ def process_empty_step():
     if request.method == "POST":
         comment = request.form["comment"]
         df.at[row_idx, "REASON"] = comment
-        df.to_excel("chunk_9 1.xlsx", index=False)
+        df.to_excel(file_name, index=False)
         empty_index += 1
         return redirect(url_for("process_empty_step"))
 
