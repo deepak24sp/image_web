@@ -65,12 +65,12 @@
             <form id="tagForm" method="post">
                 <input type="hidden" name="comment" id="selectedComment">
                 <div class="button-grid">
-                    <button type="button" class="option" onclick="submitOption('CLEAR')">CLEAR</button>
-                    <button type="button" class="option" onclick="submitOption('BLUR')">BLUR</button>
-                    <button type="button" class="option" onclick="submitOption('GLARE')">GLARE</button>
-                    <button type="button" class="option" onclick="submitOption('DIRTY')">DIRTY</button>
-                    <button type="button" class="option" onclick="submitOption('SPOOF')">SPOOF</button>
-                    <button type="button" class="option" onclick="submitOption('ACTUAL WRONG')">ACTUAL WRONG</button>
+                    <button type="button" class="option" onclick="submitOption('CLEAR')">CLEAR (C / 1)</button>
+                    <button type="button" class="option" onclick="submitOption('BLUR')">BLUR (B / 2)</button>
+                    <button type="button" class="option" onclick="submitOption('GLARE')">GLARE (G / 3)</button>
+                    <button type="button" class="option" onclick="submitOption('DIRTY')">DIRTY (D / 4)</button>
+                    <button type="button" class="option" onclick="submitOption('SPOOF')">SPOOF (S / 5)</button>
+                    <button type="button" class="option" onclick="submitOption('ACTUAL WRONG')">ACTUAL WRONG (W / 6)</button>
                 </div>
             </form>
         </div>
@@ -81,6 +81,29 @@
             document.getElementById('selectedComment').value = value;
             document.getElementById('tagForm').submit();
         }
+
+        document.addEventListener('keydown', function(event) {
+            switch(event.key.toLowerCase()) {
+                case 'c':
+                case '1':
+                    submitOption('CLEAR'); break;
+                case 'b':
+                case '2':
+                    submitOption('BLUR'); break;
+                case 'g':
+                case '3':
+                    submitOption('GLARE'); break;
+                case 'd':
+                case '4':
+                    submitOption('DIRTY'); break;
+                case 's':
+                case '5':
+                    submitOption('SPOOF'); break;
+                case 'w':
+                case '6':
+                    submitOption('ACTUAL WRONG'); break;
+            }
+        });
     </script>
 
 </body>

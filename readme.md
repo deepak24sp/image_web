@@ -18,3 +18,7 @@ python app.py
 **************waring***********
 if the row number in excel is 2 to 4 then u have enter 0 to 2 in start to end range
 and if u skip any of the image use "Process rows with empty REASON" to fill the skipped images 
+
+-- feature 
+ 1. add shortcut keys for selecting option like 
+    1. c - clear  B - Blur etc
